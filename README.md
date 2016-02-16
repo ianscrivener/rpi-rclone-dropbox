@@ -4,7 +4,14 @@ Use your Raspberry Pi to backup/sync your files to Dropbox unattended.
 
 
 </br>
-###How to create a Dropbox app token  
+###Get this code  
+````
+git clone git@github.com:ianscrivener/rpi-rclone-dropbox.git
+cd rpi-rclone-dropbox
+````
+
+</br>
+###Create a Dropbox app token  
 
 (1) Create a new API App here https://www.dropbox.com/developers/apps/create  
 
@@ -61,7 +68,7 @@ docker build --tag=my/rpi-rclone-dropbox .
 	
 ````
 
-
+</br>
 ###Thanks  
 Standing on the shoulders of giants;
 
