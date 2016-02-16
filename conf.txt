@@ -1,0 +1,5 @@
+[Dropbox]
+type = dropbox
+app_key =
+app_secret =
+token = [your-Dropbox-token-here]
