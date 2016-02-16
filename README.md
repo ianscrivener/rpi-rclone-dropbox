@@ -22,7 +22,7 @@ cd rpi-rclone-dropbox
 (3) Paste into **conf.txt**  
 
 </br>
-###Run it interactively to CLI
+###Run Docker app interactively to the CLI
 
 
 ````
@@ -39,7 +39,7 @@ docker run -it --rm=true \
 	
 ````
 
-###Run it as a daemon
+###Run the Docker app as a daemon
 
 ````
 ./run-daemon.sh
@@ -57,7 +57,7 @@ docker run -d \
 ````
 
 
-###Build it
+###Build Docker app
 ````
 ./build.sh
 ````
