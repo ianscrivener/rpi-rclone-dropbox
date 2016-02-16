@@ -1,8 +1,9 @@
-#rpi-rclone-Dropbox
+#rpi-rclone-dropbox
 
-###Why
-Use your (inexpensive) Raspberry Pi to backup/sync your files to Dropbox unattended.
+Use your Raspberry Pi to backup/sync your files to Dropbox unattended.  
 
+
+</br>
 ###How to create a Dropbox app token  
 
 (1) Create a new API App here https://www.dropbox.com/developers/apps/create  
@@ -11,40 +12,61 @@ Use your (inexpensive) Raspberry Pi to backup/sync your files to Dropbox unatten
 
 ![image](img/generate_token.png)
 
-(3) Paste into **conf.txt**
+(3) Paste into **conf.txt**  
 
+</br>
+###Run it interactively to CLI
 
-###Usage
-
-**Run to CLI**
 
 ````
-docker run -it \
-	--rm=true \
-	-v [path-to-your-Dropbox-data]:/home/pi/rclone/Dropbox \
+./run-interactively.sh
+````
+***OR***
+
+````
+docker run -it --rm=true \
+	-v /mnt/Seagate/Dropbox:/home/pi/rclone/Dropbox \
 	-v conf.txt:/root/.rclone.conf \
-	ianscrivener/rpi-rclone-dropbox
+	ianscrivener/rpi-rclone-dropbox \
+    rclone --transfers=1 -v copy /home/pi/rclone/Dropbox/Photos Dropbox:/Photo
 	
 ````
 
-**Run as a daemon**
+###Run it as a daemon
+
+````
+./run-daemon.sh
+````
+***OR***
 
 ````
 docker run -d \
-	-v [path-to-your-Dropbox-data]:/home/pi/rclone/Dropbox \
+    - t rpi-rclone-dropbox \
+	-v /mnt/Seagate/Dropbox:/home/pi/rclone/Dropbox \
 	-v conf.txt:/root/.rclone.conf \
-	-t dropbox-sync \
-	ianscrivener/rpi-rclone-dropbox
+	ianscrivener/rpi-rclone-dropbox \
+    rclone --transfers=1 -v copy /home/pi/rclone/Dropbox/Photos Dropbox:/Photo
 	
 ````
 
+
+###Build it
+````
+./build.sh
+````
+***OR***
+
+````
+docker build --tag=my/rpi-rclone-dropbox .
+	
+````
 
 
 ###Thanks  
 Standing on the shoulders of giants;
 
-**[Nick Craig-Wood's](https://github.com/ncw)** [rclone](http://rclone.org/) - an excellent utility written in Go
+**[Nick Craig-Wood's](https://github.com/ncw)** excellent **rclone** utility written in Go - [rclone](http://rclone.org/) 
 
-**[Hypriot's](http://http://blog.hypriot.com/)** [rpi-golang](https://hub.docker.com/r/hypriot/rpi-golang/) Docker image for Raspberry Pi 
+**[Hypriot's](http://http://blog.hypriot.com/)** Go Docker image for Raspberry Pi - [rpi-golang](https://hub.docker.com/r/hypriot/rpi-golang/)  
 
 
